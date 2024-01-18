@@ -5,12 +5,20 @@
 #include "../version.h"
 #include <OLEDDisplay.h>
 
+const int TIME_STRING_LENGTH = 20;
+const int DATE_STRING_LENGTH = 30;
+const int Y_OFFSET_TIME = 13;
+
 Display::Display() {}
 
 void Display::begin(std::shared_ptr<Configuration> config, std::shared_ptr<State> state) {
 	Serial.println("Begin display");
 	this->configuration = config;
 	this->state = state;
+
+	 if (!this->OLED.init()) {
+        Serial.println("Error initializing display");
+    }
 
 	this->OLED.init();
 	// flip to fit for the Watch
@@ -188,3 +196,4 @@ void Display::render() {
 	Serial.println("Rendering display");
 	this->OLED.display();
 }
+
