@@ -39,6 +39,11 @@ void Display::loop() {
 	Serial.println("Display loop");
 }
 
+/* void Display::loop() {
+    LOG("Display loop");
+}
+*/
+
 void Display::clearSplash() {
 	Serial.println("Clearing splash");
 
@@ -197,3 +202,17 @@ void Display::render() {
 	this->OLED.display();
 }
 
+/* void Display::showStatusIcons() {
+    if (this->splashHold) return;
+
+    unsigned int wifi = (*this->state).wifiState;
+
+    LOG("Displaying Status Icons");
+    LOG("wifi is: " + String(wifi));
+
+    switch (wifi) {
+        case 0:
+            this->OLED.drawXbm(OLED_WIDTH - wifi_01_width, 0, wifi_01_width, wifi_01_height, wifi_01
+	    
+     
+     */
