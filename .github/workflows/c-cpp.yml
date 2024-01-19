@@ -13,8 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential autoconf automake libtool
+    - name: Autotools configure
+      run: |
+        ./autogen.sh  # 
+        ./configure
     - name: make
       run: make
     - name: make check
